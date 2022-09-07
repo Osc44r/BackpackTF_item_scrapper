@@ -45,7 +45,7 @@ if __name__ == '__main__':
     if parseCollector != "y" and parseCollector != "n":
         print("You were supposed to pick y/n there.")
         sys.exit()
-        
+
     def wait():
         try:
             panel = WebDriverWait(driver,30).until(
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         if "Crate" not in itemname.text and "(Non-Craftable)" not in itemname.text and "Tool" not in typee.text:
             if parseGenuine == "y":
                 if float(genuine.get_attribute("abbr")) > minref and float(genuine.get_attribute("abbr")) < maxref:
-                    print('Genuine "'+itemname.text+'"')
+                    print('"Genuine "'+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('Genuine "'+itemname.text+'",')
                     f.close()
@@ -121,9 +121,9 @@ if __name__ == '__main__':
                     f.close()
             if parseHaunted == "y":
                 if float(haunted.get_attribute("abbr")) > minref and float(haunted.get_attribute("abbr")) < maxref:
-                    print('Haunted "'+itemname.text+'"')
+                    print('"Haunted "'+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('Haunted "'+itemname.text+'",')
+                    f.write('"Haunted "'+itemname.text+'",')
                     f.close()
                 elif float(haunted.get_attribute("abbr")) != 0 and float(haunted.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Haunted '+itemname.text+'"')
@@ -132,9 +132,9 @@ if __name__ == '__main__':
                     f.close()
             if parseCollector == "y":
                 if float(collector.get_attribute("abbr")) > minref and float(collector.get_attribute("abbr")) < maxref:
-                    print('Collector'"'"'s "'+itemname.text+'"')
+                    print('"Collector'"'"'s "'+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('Collector'"'"'s "'+itemname.text+'",')
+                    f.write('"Collector'"'"'s "'+itemname.text+'",')
                     f.close()
                 elif float(collector.get_attribute("abbr")) != 0 and float(collector.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Collector'"'"'s '+itemname.text+'"')
