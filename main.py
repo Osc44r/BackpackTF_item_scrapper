@@ -88,9 +88,9 @@ if __name__ == '__main__':
                     f.close()
             if parseVintage == "y":
                 if float(vintage.get_attribute("abbr")) > minref and float(vintage.get_attribute("abbr")) < maxref:
-                    print('"Vintage "'+itemname.text+'"')
+                    print('"Vintage '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('"Vintage "'+itemname.text+'",')
+                    f.write('"Vintage '+itemname.text+'",')
                     f.close()
                 elif float(vintage.get_attribute("abbr")) != 0 and float(vintage.get_attribute("abbr")) < minref and float(vintage.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Vintage '+itemname.text+'"')
