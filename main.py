@@ -4,7 +4,10 @@ if __name__ == '__main__':
     import undetected_chromedriver as uc
     from selenium.webdriver.chrome.options import Options
     from selenium.webdriver.common.by import By
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.support.ui import WebDriverWait
 
+    print("Loading...")
     options = Options()
     options.add_argument("--headless")
     driver = uc.Chrome(options=options)
@@ -42,8 +45,18 @@ if __name__ == '__main__':
     if parseCollector != "y" and parseCollector != "n":
         print("You were supposed to pick y/n there.")
         sys.exit()
+        
+    def wait():
+        try:
+            panel = WebDriverWait(driver,30).until(
+                EC.element_to_be_clickable((By.XPATH,"/html/body/main/div[2]/div/div/div[2]/div/table/tbody"))
+            )
+        except:
+            print("Backpack.tf is out of range. Refreshing...")
+            driver.refresh()
+            wait()
 
-
+    wait()
     panel = driver.find_element(By.XPATH,"/html/body/main/div[2]/div/div/div[2]/div/table/tbody")
     id = 0
     f = open('./ItemList.txt','w',encoding="utf-8")
