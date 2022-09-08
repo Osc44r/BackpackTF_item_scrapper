@@ -45,6 +45,10 @@ if __name__ == '__main__':
     if parseCollector != "y" and parseCollector != "n":
         print("You were supposed to pick y/n there.")
         sys.exit()
+    parseFestivized = input("Parse festivized items? (y/n): ")
+    if parseFestivized !="y" and parseFestivized !="n":
+        print("You were supposed to pick y/n there.")
+        sys.exit()        
 
     def wait():
         try:
@@ -81,7 +85,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('Genuine "'+itemname.text+'",')
                     f.close()
-                elif float(genuine.get_attribute("abbr")) != 0 and float(genuine.get_attribute("abbr")) < minref and float(genuine.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(genuine.get_attribute("abbr")) != 0 and float(genuine.get_attribute("abbr")) < minref and float(genuine.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Geniune '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Festivized Genuine '+itemname.text+'",')
@@ -92,7 +96,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Vintage '+itemname.text+'",')
                     f.close()
-                elif float(vintage.get_attribute("abbr")) != 0 and float(vintage.get_attribute("abbr")) < minref and float(vintage.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(vintage.get_attribute("abbr")) != 0 and float(vintage.get_attribute("abbr")) < minref and float(vintage.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Vintage '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Festivized Vintage '+itemname.text+'",')
@@ -103,7 +107,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"'+itemname.text+'",')
                     f.close()
-                elif float(unique.get_attribute("abbr")) != 0 and float(unique.get_attribute("abbr")) < minref and float(unique.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(unique.get_attribute("abbr")) != 0 and float(unique.get_attribute("abbr")) < minref and float(unique.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Festivized '+itemname.text+'",')
@@ -114,7 +118,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Strange '+itemname.text+'",')
                     f.close()
-                elif float(strange.get_attribute("abbr")) != 0 and float(strange.get_attribute("abbr")) < minref and float(strange.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(strange.get_attribute("abbr")) != 0 and float(strange.get_attribute("abbr")) < minref and float(strange.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Strange Festivized '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Strange Festivized '+itemname.text+'",')
@@ -125,7 +129,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Haunted "'+itemname.text+'",')
                     f.close()
-                elif float(haunted.get_attribute("abbr")) != 0 and float(haunted.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(haunted.get_attribute("abbr")) != 0 and float(haunted.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Haunted '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Festivized Haunted '+itemname.text+'",')
@@ -136,7 +140,7 @@ if __name__ == '__main__':
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Collector'"'"'s "'+itemname.text+'",')
                     f.close()
-                elif float(collector.get_attribute("abbr")) != 0 and float(collector.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
+                elif parseFestivized == "y" and float(collector.get_attribute("abbr")) != 0 and float(collector.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Collector'"'"'s '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
                     f.write('"Festivized Collector'"'"'s '+itemname.text+'",')
@@ -145,3 +149,6 @@ if __name__ == '__main__':
     f.write("]")
     f.close()
 
+    print("\nSuccesfully created ItemList.txt with total of: "+str(tr)+" items!")
+    input("Press enter to exit: ")
+    sys.exit()
