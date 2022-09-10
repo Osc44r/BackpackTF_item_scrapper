@@ -149,6 +149,6 @@ if __name__ == '__main__':
     f.write("]")
     f.close()
 
-    print("\nSuccesfully created ItemList.txt with total of: "+str(tr)+" items!")
+    print("\nSuccesfully created ItemList.txt")
     input("Press enter to exit: ")
     sys.exit()
