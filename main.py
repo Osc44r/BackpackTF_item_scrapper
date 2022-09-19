@@ -13,12 +13,12 @@ if __name__ == '__main__':
     driver = uc.Chrome(options=options)
     driver.get("https://backpack.tf/spreadsheet")
     minref = float(input("Input minimum price in refs to fetch data (min: 0.5, default: 1): "))
-    if minref < 0.5:
-        print("Minimum price can not be lower than 0.5")
+    if minref < 0.05:
+        print("Minimum price can not be lower than 0.05")
         sys.exit()
     maxref = float(input("Input maximum price in refs to fetch data (min: 0.5, default: 40): "))
-    if maxref < 0.5:
-        print("Maximum price can not be lower than 0.5")  
+    if maxref < 0.05:
+        print("Maximum price can not be lower than 0.05")  
         sys.exit()
         
     parseGenuine = input("Parse genuine items? (y/n): ")
@@ -78,12 +78,12 @@ if __name__ == '__main__':
         haunted = panel.find_element(By.XPATH,"/html/body/main/div[2]/div/div/div[2]/div/table/tbody/tr["+str(id)+"]/td[7]")
         collector = panel.find_element(By.XPATH,"/html/body/main/div[2]/div/div/div[2]/div/table/tbody/tr["+str(id)+"]/td[8]")
 
-        if "Crate" not in itemname.text and "(Non-Craftable)" not in itemname.text and "Tool" not in typee.text:
+        if "Crate" not in itemname.text and "(Non-Craftable)" not in itemname.text and "Tool" not in typee.text and "Primary" not in typee.text and "Secondary" not in typee.text and "Melee" not in typee.text and "Botkiller" not in itemname.text and "Golden" not in itemname.text and "Australium" not in itemname.text and "Festive" not in itemname.text:
             if parseGenuine == "y":
                 if float(genuine.get_attribute("abbr")) > minref and float(genuine.get_attribute("abbr")) < maxref:
-                    print('"Genuine "'+itemname.text+'"')
+                    print('"Genuine '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('Genuine "'+itemname.text+'",')
+                    f.write('"Genuine '+itemname.text+'",')
                     f.close()
                 elif parseFestivized == "y" and float(genuine.get_attribute("abbr")) != 0 and float(genuine.get_attribute("abbr")) < minref and float(genuine.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Geniune '+itemname.text+'"')
@@ -125,9 +125,9 @@ if __name__ == '__main__':
                     f.close()
             if parseHaunted == "y":
                 if float(haunted.get_attribute("abbr")) > minref and float(haunted.get_attribute("abbr")) < maxref:
-                    print('"Haunted "'+itemname.text+'"')
+                    print('"Haunted '+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('"Haunted "'+itemname.text+'",')
+                    f.write('"Haunted '+itemname.text+'",')
                     f.close()
                 elif parseFestivized == "y" and float(haunted.get_attribute("abbr")) != 0 and float(haunted.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Haunted '+itemname.text+'"')
@@ -138,7 +138,7 @@ if __name__ == '__main__':
                 if float(collector.get_attribute("abbr")) > minref and float(collector.get_attribute("abbr")) < maxref:
                     print('"Collector'"'"'s "'+itemname.text+'"')
                     f = open('./ItemList.txt','a',encoding="utf-8")
-                    f.write('"Collector'"'"'s "'+itemname.text+'",')
+                    f.write('"Collector'"'"'s '+itemname.text+'",')
                     f.close()
                 elif parseFestivized == "y" and float(collector.get_attribute("abbr")) != 0 and float(collector.get_attribute("abbr")) < minref and float(haunted.get_attribute("abbr")) < maxref and "Primary" in typee.text:
                     print('"Festivized Collector'"'"'s '+itemname.text+'"')
